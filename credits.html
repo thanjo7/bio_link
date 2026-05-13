@@ -8,7 +8,442 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #cce7ff 0%, #e6f2ff 50%, #b3d9ff 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  color: #1a202c;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.15) 0%, transparent 50%);
+  animation: floatBg 20s ease-in-out infinite;
+}
+
+@keyframes floatBg {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: slideDownHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes slideDownHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.header-content {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 50px 40px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 25px 0 5px;
+  font-size: 32px;
+  color: #2c3e50;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  animation: fadeInUpText 0.8s ease-out 0.2s both;
+  position: relative;
+  z-index: 2;
+}
+
+.subtitle {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  animation: fadeInUpText 0.8s ease-out 0.3s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeInUpText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #3498db, transparent);
+  margin: 15px auto;
+  border-radius: 10px;
+  animation: expandWidth 0.8s ease-out 0.5s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+.theme-switch {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1000;
+  animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#theme-toggle {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 4px 15px rgba(52, 152, 219, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+#theme-toggle:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 
+    0 8px 25px rgba(52, 152, 219, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 30px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.credits-section {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+  position: relative;
+  z-index: 10;
+}
+
+.credits-section h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.credits-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9));
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.credit-item {
+  margin-bottom: 20px;
+}
+
+.credit-item:last-child {
+  margin-bottom: 0;
+}
+
+.credit-label {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.credit-value {
+  color: #2d3748;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.back-link {
+  margin: 40px 0;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 16px;
+}
+
+.btn-back:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+footer {
+  margin-top: 60px;
+  color: #718096;
+  font-size: 14px;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+.heart {
+  display: inline-block;
+  animation: heartBeat 1.3s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.footer-year {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #16213e 100%) !important;
+  background-attachment: fixed !important;
+  color: #f7fafc;
+}
+
+body.dark-mode .header-content {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode h1 {
+  color: #f1f5f9;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .subtitle {
+  color: #cbd5e0;
+}
+
+body.dark-mode .credits-section h2 {
+  color: #e0f2fe;
+}
+
+body.dark-mode .credits-content {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.9));
+  border-color: rgba(30, 144, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .credit-label {
+  color: #e0f2fe;
+}
+
+body.dark-mode .credit-value {
+  color: #cbd5e0;
+}
+
+body.dark-mode .btn-back {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+body.dark-mode .btn-back:hover {
+  background: #60a5fa;
+  color: #0f172a;
+}
+
+body.dark-mode footer {
+  color: #a0aec0;
+}
+
+body.dark-mode #theme-toggle {
+  background: linear-gradient(135deg, #1a365d, #0f172a);
+  border-color: rgba(52, 152, 219, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(52, 152, 219, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode #theme-toggle:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-color: rgba(37, 99, 235, 0.6);
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  header {
+    margin-bottom: 30px;
+  }
+
+  .header-content {
+    padding: 35px 20px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 18px 0 6px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  #theme-toggle {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .credits-content {
+    padding: 20px;
+  }
+
+  .btn-back {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 12px;
+  }
+
+  .footer-year {
+    font-size: 11px;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -20,11 +455,8 @@
 
 <header>
 <div class="header-content">
-<div class="profile-wrapper">
-<img src="https://i.imgur.com/9PNOJ05.jpeg" alt="Foto Profilo di Jonathan" class="profile-img">
-</div>
-<h1>Credits & Attribuzioni</h1>
-<p class="subtitle">Risorse utilizzate per creare questo sito</p>
+<h1>Credits</h1>
+<p class="subtitle">Informazioni sul sito</p>
 <div class="divider"></div>
 </div>
 </header>
@@ -32,122 +464,39 @@
 <main class="container">
 
 <div class="credits-section">
-<h2>📚 Risorse Utilizzate</h2>
 
-<table class="credits-table">
-<thead>
-<tr>
-<th>Risorsa</th>
-<th>Tipo</th>
-<th>Autore/Azienda</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Font Awesome</td>
-<td>Icon Library</td>
-<td>Fonticons Inc.</td>
-<td><a href="https://fontawesome.com" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-<tr>
-<td>Google Fonts</td>
-<td>Font Library</td>
-<td>Google</td>
-<td><a href="https://fonts.google.com" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-<tr>
-<td>jQuery</td>
-<td>JavaScript Library</td>
-<td>jQuery Foundation</td>
-<td><a href="https://jquery.com" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-<tr>
-<td>Poppins Font</td>
-<td>Font Family</td>
-<td>Jonny Pinhorn & Indian Type Foundry</td>
-<td><a href="https://fonts.google.com/specimen/Poppins" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-<tr>
-<td>Imgur</td>
-<td>Image Hosting</td>
-<td>Imgur LLC</td>
-<td><a href="https://imgur.com" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-<tr>
-<td>GitHub</td>
-<td>Repository Hosting</td>
-<td>GitHub Inc.</td>
-<td><a href="https://github.com" target="_blank" rel="noopener">Visita</a></td>
-</tr>
-</tbody>
-</table>
+<div class="credits-content">
+<div class="credit-item">
+<span class="credit-label">📝 Nome Autore</span>
+<div class="credit-value">Jonathan Guirguis</div>
 </div>
 
-<div class="tech-section">
-<h2>🛠️ Tecnologie Utilizzate</h2>
-
-<div class="tech-grid">
-<div class="tech-card">
-<i class="fab fa-html5" style="color: #e34c26;"></i>
-<h3>HTML5</h3>
-<p>Linguaggio di markup per la struttura semantica del sito</p>
+<div class="credit-item">
+<span class="credit-label">©️ Diritti d'Autore</span>
+<div class="credit-value">© 2026 Jonathan Guirguis. Tutti i diritti riservati.</div>
 </div>
 
-<div class="tech-card">
-<i class="fab fa-css3-alt" style="color: #264de4;"></i>
-<h3>CSS3</h3>
-<p>Foglio di stile per il design responsivo e le animazioni</p>
+<div class="credit-item">
+<span class="credit-label">🛠️ Tecnologie Utilizzate</span>
+<div class="credit-value">
+HTML5 - Struttura semantica del sito<br>
+CSS3 - Stili, animazioni e layout responsivo<br>
+JavaScript - Interattività e funzionalità dinamiche<br>
+jQuery - Manipolazione del DOM semplificata<br>
+Font Awesome - Icone vettoriali<br>
+Google Fonts - Font Poppins
+</div>
 </div>
 
-<div class="tech-card">
-<i class="fab fa-js-square" style="color: #f7df1e;"></i>
-<h3>JavaScript</h3>
-<p>Linguaggio di programmazione per l'interattività della pagina</p>
-</div>
-
-<div class="tech-card">
-<i class="fab fa-js" style="color: #0769ad;"></i>
-<h3>jQuery</h3>
-<p>Libreria JavaScript per semplificare la manipolazione del DOM</p>
-</div>
-
-<div class="tech-card">
-<i class="fas fa-mobile-alt" style="color: #3498db;"></i>
-<h3>Responsive Design</h3>
-<p>Media query per adattarsi a tutti i dispositivi</p>
-</div>
-
-<div class="tech-card">
-<i class="fas fa-th" style="color: #9b59b6;"></i>
-<h3>Grid & Flexbox</h3>
-<p>Layout moderno per la struttura della pagina</p>
+<div class="credit-item">
+<span class="credit-label">📊 Versione e Data</span>
+<div class="credit-value">
+Versione: 1.0.0<br>
+Ultimo aggiornamento: 13 Maggio 2026
 </div>
 </div>
 </div>
 
-<div class="dev-info">
-<h2>👨‍💻 Chi Ha Creato Questo Sito</h2>
-<p>
-<strong>Nome:</strong> Jonathan Guirguis
-</p>
-<p>
-<strong>Scuola:</strong> Liceo Scientifico Torricelli - Opzione Scienze Applicate
-</p>
-<p>
-<strong>Università:</strong> Politecnico di Milano (Target)
-</p>
-<p>
-<strong>Specializzazione:</strong> Web Development, Frontend Design
-</p>
-<p>
-<strong>Competenze Principali:</strong> HTML, CSS, JavaScript, Responsive Design, User Interface Design
-</p>
-<p>
-<strong>Descrizione Progetto:</strong> Questo sito è stato creato come progetto per il corso di Informatica al Liceo. 
-È un esempio di come integrare HTML, CSS e JavaScript per creare un'esperienza utente moderna e interattiva.
-Il sito include layout responsive, animazioni fluide, modalità dark/light e un sistema di navigazione relativa tra pagine.
-</p>
 </div>
 
 <div class="back-link">
@@ -167,16 +516,15 @@ Il sito include layout responsive, animazioni fluide, modalità dark/light e un 
 <script>
 const pulsante = document.getElementById('theme-toggle');
 const corpo = document.body;
+
 window.addEventListener('load', () => {
   const temaSalvato = localStorage.getItem('tema');
   if (temaSalvato === 'dark') {
     corpo.classList.add('dark-mode');
     pulsante.innerText = "☀️ Modalità Luce";
   }
-  $(".credits-table").hide().fadeIn(2000);
-  $(".tech-card").hide().fadeIn(2500);
-  $(".dev-info").hide().fadeIn(3000);
 });
+
 pulsante.addEventListener('click', () => {
   pulsante.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
   pulsante.style.transform = 'rotate(360deg) scale(1.1)';
@@ -206,6 +554,7 @@ document.addEventListener('mousemove', (e) => {
     header.style.transform = `perspective(1000px) rotateX(${moveY}deg) rotateY(${moveX}deg)`;
   }
 });
+
 document.addEventListener('mouseleave', () => {
   const header = document.querySelector('header');
   if (header) {
