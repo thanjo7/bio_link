@@ -1,20 +1,871 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-<title>Credits</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Guirguis - Credits</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-body { background: #3498db; color: white; font-family: Arial; padding: 40px; }
-h1 { text-align: center; }
-a { color: white; text-decoration: underline; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #cce7ff 0%, #e6f2ff 50%, #b3d9ff 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  color: #1a202c;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.15) 0%, transparent 50%);
+  animation: floatBg 20s ease-in-out infinite;
+}
+
+@keyframes floatBg {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: slideDownHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes slideDownHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.header-content {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 50px 40px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotateGradient 20s linear infinite;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+h1 {
+  margin: 25px 0 5px;
+  font-size: 32px;
+  color: #2c3e50;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  animation: fadeInUpText 0.8s ease-out 0.2s both;
+  position: relative;
+  z-index: 2;
+}
+
+.subtitle {
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: 600;
+  animation: fadeInUpText 0.8s ease-out 0.3s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeInUpText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #3498db, transparent);
+  margin: 15px auto;
+  border-radius: 10px;
+  animation: expandWidth 0.8s ease-out 0.5s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+.theme-switch {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1000;
+  animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#theme-toggle {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 4px 15px rgba(52, 152, 219, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+#theme-toggle:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 
+    0 8px 25px rgba(52, 152, 219, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 30px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.credits-section {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+  position: relative;
+  z-index: 10;
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.credits-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9));
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.credit-item {
+  margin-bottom: 20px;
+}
+
+.credit-item:last-child {
+  margin-bottom: 0;
+}
+
+.credit-label {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: block;
+  color: #3498db;
+}
+
+.credit-value {
+  color: #2d3748;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.tech-item {
+  background: rgba(52, 152, 219, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+  background: rgba(52, 152, 219, 0.15);
+}
+
+.tech-item i {
+  color: #3498db;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.tech-item-name {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 13px;
+}
+
+.resource-table {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.resource-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+  transition: all 0.3s ease;
+}
+
+.resource-row:hover {
+  background: rgba(52, 152, 219, 0.05);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.resource-row:last-child {
+  border-bottom: none;
+}
+
+.resource-name {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.resource-link {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 6px 12px;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+  background: #3498db;
+  color: white;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(52, 152, 219, 0.1);
+  transform: translateX(5px);
+}
+
+.feature-icon {
+  color: #3498db;
+  font-size: 18px;
+  min-width: 20px;
+}
+
+.feature-text {
+  color: #2d3748;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.back-link {
+  margin: 40px 0;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 16px;
+}
+
+.btn-back:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+footer {
+  margin-top: 60px;
+  color: #718096;
+  font-size: 14px;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+.heart {
+  display: inline-block;
+  animation: heartBeat 1.3s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.footer-year {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #16213e 100%) !important;
+  background-attachment: fixed !important;
+  color: #f7fafc;
+}
+
+body.dark-mode .header-content {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode h1 {
+  color: #f1f5f9;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .subtitle {
+  color: #cbd5e0;
+}
+
+body.dark-mode .section-title {
+  color: #e0f2fe;
+}
+
+body.dark-mode .credits-content {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.9));
+  border-color: rgba(30, 144, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .credit-label {
+  color: #60a5fa;
+}
+
+body.dark-mode .credit-value {
+  color: #cbd5e0;
+}
+
+body.dark-mode .tech-item {
+  background: rgba(30, 144, 255, 0.15);
+  border-left-color: #60a5fa;
+}
+
+body.dark-mode .tech-item:hover {
+  background: rgba(30, 144, 255, 0.25);
+}
+
+body.dark-mode .tech-item i {
+  color: #60a5fa;
+}
+
+body.dark-mode .tech-item-name {
+  color: #e0f2fe;
+}
+
+body.dark-mode .resource-row {
+  border-bottom-color: rgba(30, 144, 255, 0.2);
+}
+
+body.dark-mode .resource-row:hover {
+  background: rgba(30, 144, 255, 0.1);
+}
+
+body.dark-mode .resource-name {
+  color: #e0f2fe;
+}
+
+body.dark-mode .resource-link {
+  background: rgba(30, 144, 255, 0.2);
+  color: #60a5fa;
+}
+
+body.dark-mode .resource-link:hover {
+  background: #60a5fa;
+  color: #0f172a;
+}
+
+body.dark-mode .feature-item {
+  background: rgba(30, 144, 255, 0.1);
+}
+
+body.dark-mode .feature-item:hover {
+  background: rgba(30, 144, 255, 0.15);
+}
+
+body.dark-mode .feature-icon {
+  color: #60a5fa;
+}
+
+body.dark-mode .feature-text {
+  color: #cbd5e0;
+}
+
+body.dark-mode .btn-back {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+body.dark-mode .btn-back:hover {
+  background: #60a5fa;
+  color: #0f172a;
+}
+
+body.dark-mode footer {
+  color: #a0aec0;
+}
+
+body.dark-mode #theme-toggle {
+  background: linear-gradient(135deg, #1a365d, #0f172a);
+  border-color: rgba(52, 152, 219, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(52, 152, 219, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode #theme-toggle:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-color: rgba(37, 99, 235, 0.6);
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  header {
+    margin-bottom: 30px;
+  }
+
+  .header-content {
+    padding: 35px 20px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 18px 0 6px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  #theme-toggle {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .credits-content {
+    padding: 20px;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .btn-back {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 12px;
+  }
+
+  .footer-year {
+    font-size: 11px;
+  }
+}
 </style>
 </head>
 <body>
+
+<div class="theme-switch">
+<button id="theme-toggle">🌙 Modalità Notte</button>
+</div>
+
+<div class="background-animation"></div>
+
+<header>
+<div class="header-content">
 <h1>Credits</h1>
-<p><strong>Autore:</strong> Jonathan Guirguis</p>
-<p><strong>Diritti:</strong> © 2026 Jonathan Guirguis</p>
-<p><strong>Versione:</strong> 1.0.0 - 13 Maggio 2026</p>
-<p><strong>Tecnologie:</strong> HTML5, CSS3, JavaScript, jQuery</p>
-<br>
-<a href="index.html">← Torna alla Home</a>
+<p class="subtitle">Informazioni e ringraziamenti</p>
+<div class="divider"></div>
+</div>
+</header>
+
+<main class="container">
+
+<div class="credits-section">
+<div class="credits-content">
+<div class="section-title">
+<i class="fas fa-user-circle"></i> Informazioni Autore
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Nome Autore</span>
+<div class="credit-value">Jonathan Guirguis</div>
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Istituto</span>
+<div class="credit-value">Liceo Scientifico Torricelli - Opzione Scienze Applicate</div>
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Università Target</span>
+<div class="credit-value">Politecnico di Milano</div>
+</div>
+</div>
+</div>
+
+<div class="credits-section">
+<div class="credits-content">
+<div class="section-title">
+<i class="fas fa-code"></i> Tecnologie Utilizzate
+</div>
+
+<div class="tech-grid">
+<div class="tech-item">
+<i class="fab fa-html5"></i>
+<div class="tech-item-name">HTML5</div>
+</div>
+<div class="tech-item">
+<i class="fab fa-css3-alt"></i>
+<div class="tech-item-name">CSS3</div>
+</div>
+<div class="tech-item">
+<i class="fab fa-js-square"></i>
+<div class="tech-item-name">JavaScript</div>
+</div>
+<div class="tech-item">
+<i class="fab fa-js"></i>
+<div class="tech-item-name">jQuery</div>
+</div>
+</div>
+
+<div class="credit-item" style="margin-top: 20px;">
+<span class="credit-label">Descrizione</span>
+<div class="credit-value">
+HTML5 per la struttura semantica, CSS3 per design responsivo e animazioni fluide, JavaScript e jQuery per interattività dinamica. Font Awesome per icone vettoriali e Google Fonts per tipografia moderna.
+</div>
+</div>
+</div>
+</div>
+
+<div class="credits-section">
+<div class="credits-content">
+<div class="section-title">
+<i class="fas fa-external-link-alt"></i> Risorse Esterne
+</div>
+
+<div class="resource-table">
+<div class="resource-row">
+<span class="resource-name">Font Awesome</span>
+<a href="https://fontawesome.com" target="_blank" class="resource-link">Visita</a>
+</div>
+<div class="resource-row">
+<span class="resource-name">Google Fonts</span>
+<a href="https://fonts.google.com" target="_blank" class="resource-link">Visita</a>
+</div>
+<div class="resource-row">
+<span class="resource-name">jQuery</span>
+<a href="https://jquery.com" target="_blank" class="resource-link">Visita</a>
+</div>
+<div class="resource-row">
+<span class="resource-name">Imgur (Hosting)</span>
+<a href="https://imgur.com" target="_blank" class="resource-link">Visita</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="credits-section">
+<div class="credits-content">
+<div class="section-title">
+<i class="fas fa-star"></i> Funzionalità Principali
+</div>
+
+<div class="features-grid">
+<div class="feature-item">
+<i class="fas fa-mobile-alt feature-icon"></i>
+<div class="feature-text"><strong>Responsive Design</strong> - Perfetto su mobile, tablet e desktop</div>
+</div>
+<div class="feature-item">
+<i class="fas fa-moon feature-icon"></i>
+<div class="feature-text"><strong>Dark Mode</strong> - Tema scuro/chiaro con salvataggio preferenze</div>
+</div>
+<div class="feature-item">
+<i class="fas fa-magic feature-icon"></i>
+<div class="feature-text"><strong>Animazioni Fluide</strong> - Transizioni CSS3 e effetti interattivi</div>
+</div>
+<div class="feature-item">
+<i class="fas fa-link feature-icon"></i>
+<div class="feature-text"><strong>Navigazione Relativa</strong> - Linking tra pagine senza percorsi assoluti</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="credits-section">
+<div class="credits-content">
+<div class="section-title">
+<i class="fas fa-copyright"></i> Copyright e Versione
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Diritti d'Autore</span>
+<div class="credit-value">© 2026 Jonathan Guirguis. Tutti i diritti riservati.</div>
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Versione</span>
+<div class="credit-value">1.0.0</div>
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Ultimo Aggiornamento</span>
+<div class="credit-value">13 Maggio 2026</div>
+</div>
+
+<div class="credit-item">
+<span class="credit-label">Progetto</span>
+<div class="credit-value">Corso di Informatica - Liceo Scientifico Torricelli</div>
+</div>
+</div>
+</div>
+
+<div class="back-link">
+<a href="index.html" class="btn-back">
+<i class="fas fa-arrow-left"></i> Torna alla Home
+</a>
+</div>
+
+</main>
+
+<footer>
+<p>Realizzato con <span class="heart">❤️</span> per il corso di Informatica</p>
+<p class="footer-year">© 2026 Jonathan Guirguis</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+const pulsante = document.getElementById('theme-toggle');
+const corpo = document.body;
+
+window.addEventListener('load', () => {
+  const temaSalvato = localStorage.getItem('tema');
+  if (temaSalvato === 'dark') {
+    corpo.classList.add('dark-mode');
+    pulsante.innerText = "☀️ Modalità Luce";
+  }
+});
+
+pulsante.addEventListener('click', () => {
+  pulsante.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  pulsante.style.transform = 'rotate(360deg) scale(1.1)';
+  
+  setTimeout(() => {
+    pulsante.style.transform = 'translateY(-4px) scale(1.08)';
+  }, 500);
+
+  corpo.classList.toggle('dark-mode');
+
+  if (corpo.classList.contains('dark-mode')) {
+    pulsante.innerText = "☀️ Modalità Luce";
+    localStorage.setItem('tema', 'dark');
+  } else {
+    pulsante.innerText = "🌙 Modalità Notte";
+    localStorage.setItem('tema', 'light');
+  }
+});
+
+document.addEventListener('mousemove', (e) => {
+  const mouseX = e.clientX / window.innerWidth;
+  const mouseY = e.clientY / window.innerHeight;
+  const header = document.querySelector('header');
+  if (header) {
+    const moveX = (mouseX - 0.5) * 5;
+    const moveY = (mouseY - 0.5) * 5;
+    header.style.transform = `perspective(1000px) rotateX(${moveY}deg) rotateY(${moveX}deg)`;
+  }
+});
+
+document.addEventListener('mouseleave', () => {
+  const header = document.querySelector('header');
+  if (header) {
+    header.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  }
+});
+</script>
+
 </body>
 </html>
